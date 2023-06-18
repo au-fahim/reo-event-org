@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
@@ -24,4 +24,14 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+} */
+
+@layer components {
+  .main_wrapper {
+    @apply max-w-7xl px-6 mx-auto;
+  }
+
+  .active_nav {
+    @apply before:absolute before:-bottom-1 before:w-0 before:h-1 before:bg-blue before:left-1/2 before:-translate-x-1/2 before:rounded-full transition;
+  }
 }
