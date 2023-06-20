@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
 import { useState } from "react";
-import { BiLogIn } from "react-icons/bi";
+import { BiLogIn, BiX } from "react-icons/bi";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { Button, Drawer } from "@mui/material";
 
@@ -21,7 +21,6 @@ export default function Header() {
     ) {
       return;
     }
-
     setMenuShow(open);
   };
 
@@ -32,24 +31,33 @@ export default function Header() {
           {/* LOGO */}
           <Link href="/" className="flex-initial w-40">
             <div>
-              <Image src="/logo/reo.svg" alt="logo" height={60} width={100} />
+              <Image
+                src="/logo/reo.svg"
+                alt="logo"
+                height={60}
+                width={100}
+                priority
+              />
             </div>
           </Link>
 
           {/* Navigation */}
           <div className="flex-1 hidden md:flex justify-center">
-            <Nav />
+            <Nav nav_group="nav_group" nav_link="nav_link" />
           </div>
 
           {/* User Profile Or Sign In button */}
           <div className="flex-initial w-40 hidden md:flex justify-end">
-            <Button className="text-blue" startIcon={<BiLogIn />}>
+            <Button className="text-[#2305e5]" startIcon={<BiLogIn />}>
               <span>Login</span>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="flex-initial md:hidden" onClick={toggleDrawer(true)}>
+          <div
+            className="flex-initial md:hidden cursor-pointer"
+            onClick={toggleDrawer(true)}
+          >
             <HiBars3BottomRight size={30} />
           </div>
           <Drawer
@@ -57,7 +65,22 @@ export default function Header() {
             open={menuShow}
             onClose={toggleDrawer(false)}
           >
-            Menu List
+            <header className="py-4 px-4 border-b">
+              <BiX
+                size={34}
+                className="bg-slate-200 rounded-full py-2 px-2 hover:bg-slate-50 cursor-pointer"
+                onClick={toggleDrawer(false)}
+              />
+            </header>
+
+            
+
+            <Nav
+              nav_group="mobile_nav_group"
+              nav_link="mobile_nav_link"
+              closeMenu={toggleDrawer(false)}
+            />
+
           </Drawer>
         </div>
       </MainWrapper>

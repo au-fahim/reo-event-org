@@ -1,3 +1,13 @@
+import MainWrapper from "@/components/MainWrapper";
+import EventCarosel from "@/components/events/EventsCarosel";
+
 export default function Events() {
-  return <div>Events</div>
+  return (
+    <section>
+      <MainWrapper>
+        {/* Upcomming Event Section */}
+        <EventCarosel />
+      </MainWrapper>
+    </section>
+  );
 }

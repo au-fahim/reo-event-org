@@ -26,18 +26,19 @@ const navLinks = [
   },
 ];
 
-export default function Nav() {
+export default function Nav({ nav_group, nav_link, closeMenu }) {
   const pathname = usePathname();
 
   return (
-    <nav className="flex flex-row gap-6">
+    <nav className={nav_group}>
       {navLinks.map((item, index) => (
         <Link
           key={index}
           href={item.linkPath}
-          className={`text-black hover:text-blue relative ${
-            pathname === item.linkPath && "active_nav before:w-2/5"
+          className={`${nav_link} ${
+            pathname === item.linkPath && "active_nav"
           }`}
+          onClick={closeMenu}
         >
           {item.linkText}
         </Link>
